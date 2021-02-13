@@ -3,6 +3,7 @@ FROM drupal:9.1.4-php7.4-apache
 ENV NODE_VERSION=14.x
 
 RUN apt-get update && apt-get install -y \
+  openssh-client \
   git \
   imagemagick \
   libmagickwand-dev \
