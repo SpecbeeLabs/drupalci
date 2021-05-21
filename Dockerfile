@@ -1,4 +1,4 @@
-FROM drupal:9.1.4-php7.4-apache
+FROM drupal:9.1-php7.4-apache
 
 ENV NODE_VERSION=14.x
 
@@ -22,6 +22,8 @@ RUN echo 'memory_limit = -1' > /usr/local/etc/php/php-cli.ini
 
 # Remove the vanilla Drupal project that comes with this image.
 RUN rm -rf ..?* .[!.]* *
+
+# Create and make /app as the mounting directory.
 WORKDIR /
 RUN mkdir app
 
@@ -29,7 +31,7 @@ RUN mkdir app
 RUN sed -ri -e 's!/var/www/html!/app/docroot!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www!/app/docroot!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Install Robo CI.
+# Make all vendor binaries availabe in PATH.
 ENV PATH="/app/vendor/bin:${PATH}"
 
 # Install Chrome browser.
