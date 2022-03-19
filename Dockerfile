@@ -1,4 +1,4 @@
-FROM drupal:9.1-php7.4-apache
+FROM drupal:9-apache
 
 ENV NODE_VERSION=14.x
 
