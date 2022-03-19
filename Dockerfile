@@ -34,6 +34,10 @@ RUN sed -ri -e 's!/var/www!/app/docroot!g' /etc/apache2/apache2.conf /etc/apache
 # Make all vendor binaries availabe in PATH.
 ENV PATH="/app/vendor/bin:${PATH}"
 
+# Install Robo.
+RUN wget https://robo.li/robo.phar && \
+    chmod +x robo.phar && mv robo.phar /usr/local/bin/robo
+
 # Install Chrome browser.
 RUN apt-get install --yes gnupg2 apt-transport-https
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
