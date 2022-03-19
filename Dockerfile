@@ -38,6 +38,10 @@ ENV PATH="/app/vendor/bin:${PATH}"
 RUN wget https://robo.li/robo.phar && \
     chmod +x robo.phar && mv robo.phar /usr/local/bin/robo
 
+# Install Behat
+RUN wget https://github.com/Behat/Behat/releases/download/v3.10.0/behat.phar && \
+    chmod +x behat.phar && mv behat.phar /usr/local/bin/behat
+
 # Install Chrome browser.
 RUN apt-get install --yes gnupg2 apt-transport-https
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
