@@ -1,6 +1,6 @@
 FROM drupal:9.1-php7.4-apache
 
-ENV NODE_VERSION=14.x
+ENV NODE_VERSION=16.x
 
 RUN apt-get update && apt-get install -y \
   git \
